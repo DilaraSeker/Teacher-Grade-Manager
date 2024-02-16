@@ -7,17 +7,17 @@ import jakarta.persistence.*;
 public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long gradeId;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "student_id")
+    @JoinColumn(name = "STUDENT_ID")
     private Student student;
-
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "course_id")
+    @JoinColumn(name = "COURSE_ID")
     private Course course;
+
     private int examNumber;
     private double grade;
 
@@ -31,12 +31,12 @@ public class Grade {
         this.grade = grade;
     }
 
-    public Long getId() {
-        return id;
+    public Long getGradeId() {
+        return gradeId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setGradeId(Long gradeId) {
+        this.gradeId = gradeId;
     }
 
     public Student getStudent() {
@@ -48,6 +48,9 @@ public class Grade {
     }
 
     public Course getCourse() {
+        if (course == null) {
+            throw new IllegalStateException("Course cannot be null for this grade.");
+        }
         return course;
     }
 
