@@ -9,6 +9,6 @@ public interface StudentService {
     Student getStudentById(Long id);
     Student getStudentByStudentNumber(String studentNumber);
     void saveStudent(Student student);
-    void deleteStudentById(Long id);
+    void deleteStudentByStudentId(Long id);
 
 }
