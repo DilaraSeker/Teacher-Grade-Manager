@@ -7,28 +7,33 @@ import java.util.List;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long courseId;
 
+    @Column(unique = true)
     private String courseCode;
+
+    @Column(unique = true)
     private String courseName;
 
     @OneToMany(mappedBy = "course")
     private List<Grade> grades;
 
+    private int examId;
     public Course() {
     }
 
-    public Course(String courseCode, String courseName) {
+    public Course(String courseCode, String courseName, int examId) {
         this.courseCode = courseCode;
         this.courseName = courseName;
+        this.examId = examId;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCourseId() {
+        return courseId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourseCode() {
