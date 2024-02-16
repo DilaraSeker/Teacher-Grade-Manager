@@ -18,18 +18,18 @@ public class GradeServiceImpl implements GradeService {
     }
 
     @Override
-    public List<Grade> getGradesByStudentId(Long studentId) {
-        return gradeRepository.findByStudentId(studentId);
+    public Grade getGradeByStudentId(Long studentId) {
+        return gradeRepository.findByStudentStudentId(studentId);
     }
 
     @Override
-    public List<Grade> getGradesByCourseId(Long courseId) {
-        return gradeRepository.findByCourseId(courseId);
+    public Grade getGradeByCourseId(Long courseId) {
+        return gradeRepository.findByCourseCourseId(courseId);
     }
 
     @Override
-    public List<Grade> getGradesByStudentIdAndCourseId(Long studentId, Long courseId) {
-        return gradeRepository.findByStudentIdAndCourseId(studentId, courseId);
+    public Grade findByStudentStudentIdAndCourseCourseId(Long studentId, Long courseId) {
+        return gradeRepository.findByStudentStudentIdAndCourseCourseId(studentId, courseId);
     }
 
     @Override

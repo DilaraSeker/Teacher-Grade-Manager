@@ -6,9 +6,9 @@ import java.util.List;
 public interface GradeService {
 
     List<Grade> getAllGrades();
-    List<Grade> getGradesByStudentId(Long studentId);
-    List<Grade> getGradesByCourseId(Long courseId);
-    List<Grade> getGradesByStudentIdAndCourseId(Long studentId, Long courseId);
+    Grade getGradeByStudentId(Long studentId);
+    Grade getGradeByCourseId(Long courseId);
+    Grade findByStudentStudentIdAndCourseCourseId(Long studentId, Long courseId);
     void saveGrade(Grade grade);
     void deleteGradeById(Long gradeId);
 
