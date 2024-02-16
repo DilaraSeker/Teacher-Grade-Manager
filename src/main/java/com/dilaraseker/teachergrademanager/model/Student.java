@@ -7,8 +7,8 @@ import java.util.List;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long studentId;
+    @Column(unique = true)
     private String studentNumber;
     private String firstName;
     private String lastName;
@@ -25,12 +25,12 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public Long getId() {
-        return id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
     public String getStudentNumber() {
