@@ -1,45 +1,3 @@
-.container {
-  height: 100vh; /* Sayfa yüksekliğini ekranın tamamını kaplayacak şekilde ayarlar */
-  display: flex; /* İçeriği dikeyde hizalar */
-  justify-content: center; /* İçeriği yatayda merkezler */
- /* İçeriği dikeyde merkezler */
-}
-
-.form-container {
-  width: 400px;
- 
-  
-}
-
-.form-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.form-group label {
-  flex: 0 0 120px;
-  margin-right: 10px; /* Etiketlerin giriş alanlarına olan boşluğu */
-}
-
-.form-group input,
-.form-group select {
-  flex: 1;
-}
-
-
-.buttons {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-}
-
-.App.left-aligned .buttons {
-  left: 20px; /* İstenilen sola kayma miktarı */
-}
 .App {
   text-align: center;
 }
@@ -48,7 +6,7 @@
   display: flex;
   justify-content: center;
   padding: 10px;
-  background-color: #333;
+  background-color: #7b6bf0;
 }
 
 .navbar-brand {
@@ -65,6 +23,65 @@
   padding: 20px;
 }
 .square-btn {
-  height: 200px; /* Örnek bir boyut, istediğiniz boyuta göre değiştirin */
-  width: 200px; /* Butonları kare olarak yapar */
+  height: 200px; 
+  width: 200px; 
+}
+.container {
+  height: 100vh; 
+  display: flex; 
+  justify-content: center; 
+}
+h2 {
+  color: #333;
+  font-size: 28px; 
+  font-weight: bold; 
+}
+.custom-button {
+  background-color: #7b6bf0;
+  width: 200px; 
+
+}
+/* DASHBOARD BUTTON*/
+.custom-button:hover {
+  background-color: #6553eb; 
+}
+.custom-button:active {
+  background-color: #6553eb; 
+}
+.custom-button:focus {
+  background-color: #6553eb; 
+}
+/* ADD BUTTON*/
+.custom-add-button {
+  background-color: #7b6bf0;
+  width: 100px; 
+}
+.custom-add-button:hover {
+  background-color: #6553eb; 
+}
+.custom-add-button:active {
+  background-color: #6553eb; 
+}
+.custom-add-button:focus {
+  background-color: #6553eb; 
+}
+/* FORM */
+.form-container {
+  width: 400px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  flex: 0 0 120px;
+  margin-right: 0px; 
+}
+
+.form-group input,
+.form-group select {
+  flex: 1;
 }
