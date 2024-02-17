@@ -1,24 +1,13 @@
 package com.dilaraseker.teachergrademanager.DTO;
 
-public class GradeDTO {
+public class GradeResponseDTO {
     private Long id;
     private String studentNumber;
+    private String studentName;
     private Long courseId;
     private String courseName;
     private int examNumber;
     private double grade;
-
-    public GradeDTO() {
-    }
-
-    public GradeDTO(Long id, String studentNumber, Long courseId, String courseName, int examNumber, double grade) {
-        this.id = id;
-        this.studentNumber = studentNumber;
-        this.courseId = courseId;
-        this.courseName = courseName;
-        this.examNumber = examNumber;
-        this.grade = grade;
-    }
 
     public Long getId() {
         return id;
@@ -34,6 +23,14 @@ public class GradeDTO {
 
     public void setStudentNumber(String studentNumber) {
         this.studentNumber = studentNumber;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     public Long getCourseId() {
