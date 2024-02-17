@@ -1,6 +1,6 @@
 package com.dilaraseker.teachergrademanager.controller;
 
-import com.dilaraseker.teachergrademanager.DTO.GradeDTO;
+import com.dilaraseker.teachergrademanager.DTO.GradeResponseDTO;
 import com.dilaraseker.teachergrademanager.DTO.GradeRequestDTO;
 import com.dilaraseker.teachergrademanager.exception.CourseNotFoundException;
 import com.dilaraseker.teachergrademanager.model.Course;
@@ -30,19 +30,22 @@ public class GradeController {
     @Autowired
     private CourseRepository courseRepository; // Burada da CourseRepository örneğini enjekte etmek gerekiyor
     @GetMapping
-    public List<GradeDTO> getAllGrades() {
+    public List<GradeResponseDTO> getAllGrades() {
         List<Grade> grades = gradeService.getAllGrades();
-        return grades.stream().map(this::convertToDTO).collect(Collectors.toList());
+        return grades.stream().map(this::convertToDTOWithCourseAndStudentInfo).collect(Collectors.toList());
     }
 
-    private GradeDTO convertToDTO(Grade grade) {
-        GradeDTO dto = new GradeDTO();
+    private GradeResponseDTO convertToDTOWithCourseAndStudentInfo(Grade grade) {
+        GradeResponseDTO dto = new GradeResponseDTO();
         dto.setId(grade.getGradeId());
         dto.setStudentNumber(grade.getStudent().getStudentNumber());
         dto.setCourseId(grade.getCourse().getCourseId());
         dto.setCourseName(grade.getCourse().getCourseName());
         dto.setExamNumber(grade.getExamNumber());
         dto.setGrade(grade.getGrade());
+        String studentFullName = grade.getStudent().getFirstName() + " " + grade.getStudent().getLastName();
+        dto.setStudentName(studentFullName);
+
         return dto;
     }
 
@@ -53,21 +56,22 @@ public class GradeController {
                 return ResponseEntity.badRequest().body("StudentId, ExamId, and CourseId cannot be null.");
             }
 
+            Student student = studentRepository.findByStudentId(gradeRequestDTO.getStudentId());
+            if (student == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found with student id: " + gradeRequestDTO.getStudentId());
+            }
 
-            Grade existingGrade = gradeRepository.findByStudentStudentIdAndCourseExamId(gradeRequestDTO.getStudentId(), gradeRequestDTO.getExamNumber());
+            Course course = courseRepository.findById(gradeRequestDTO.getCourseId())
+                    .orElseThrow(() -> new CourseNotFoundException("Course not found with id: " + gradeRequestDTO.getCourseId()));
+
+            Grade existingGrade = gradeRepository.findByStudentStudentIdAndCourseCourseIdAndExamNumber(student.getStudentId(), course.getCourseId(), gradeRequestDTO.getExamNumber());
+
             if (existingGrade != null) {
                 existingGrade.setGrade(gradeRequestDTO.getGrade());
                 gradeRepository.save(existingGrade);
                 return ResponseEntity.status(HttpStatus.OK).body("Grade updated successfully.");
             } else {
-                Student student = studentRepository.findByStudentId(gradeRequestDTO.getStudentId());
-                if (student == null) {
-                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found with student id: " + gradeRequestDTO.getStudentId());
-                }
-
-                Course course = courseRepository.findById(gradeRequestDTO.getCourseId())
-                        .orElseThrow(() -> new CourseNotFoundException("Course not found with id: " + gradeRequestDTO.getCourseId()));
-
+                // Notu ekle
                 Grade grade = new Grade();
                 grade.setStudent(student);
                 grade.setCourse(course);
@@ -83,9 +87,6 @@ public class GradeController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while saving the grade.");
         }
     }
-
-
-
 
     @DeleteMapping("/{gradeId}")
     public ResponseEntity<String> deleteGradeById(@PathVariable Long gradeId) {
