@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const StudentList = () => {
+const ListStudent = () => {
   const [students, setStudents] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -60,4 +60,4 @@ const StudentList = () => {
   );
 };
 
-export default StudentList;
+export default ListStudent;
