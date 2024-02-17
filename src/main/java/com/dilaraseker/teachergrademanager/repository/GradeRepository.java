@@ -9,5 +9,5 @@ public interface GradeRepository extends JpaRepository<Grade, Long> {
     Grade findByStudentStudentId(Long studentId);
     Grade findByCourseCourseId(Long courseId);
     Grade findByStudentStudentIdAndCourseCourseId(Long studentId, Long courseId);
-    Grade findByStudentStudentIdAndCourseExamId(Long studentId, int examID);
+    Grade findByStudentStudentIdAndCourseCourseIdAndExamNumber(Long studentId, Long courseId, Integer examNumber);
 }
