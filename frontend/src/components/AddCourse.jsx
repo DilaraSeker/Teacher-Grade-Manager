@@ -9,7 +9,7 @@ const AddCourse = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/courses', {
+      await axios.post('http://localhost:8080/api/courses', {
         courseCode,
         courseName
       });
@@ -29,7 +29,7 @@ const AddCourse = () => {
         <h3>Ders Ekle</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Öğrenci Numarası:</label>
+            <label>Ders Kodu:</label>
             <input
               type="text"
               placeholder="Ders Kodu"
@@ -38,7 +38,7 @@ const AddCourse = () => {
             />
           </div>
           <div className="form-group">
-            <label>Ders Adı:</label>
+            <label>Course Name:</label>
             <input
               type="text"
               placeholder="Ders Adı"
@@ -46,7 +46,7 @@ const AddCourse = () => {
               onChange={e => setCourseName(e.target.value)}
             />
           </div>
-          <button type="submit">Ekle</button>
+          <button type="submit" className="btn btn-primary mr-2" style={{ backgroundColor: '#7b6bf0' }}>Ekle</button>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </form>
       </div>
