@@ -11,7 +11,7 @@ This project aims to develop two separate applications using React.js and Spring
 ![GradeDashboard](assests/GradeDashboard.PNG)
 ![AddGrade](assests/AddGrade.PNG)
 ![ListGrade](assests/ListGrade.PNG)
-![GradeDetails](assests/GradeDetails.PNG)
+![GradeDetails](assests/GradeDetails..PNG)
 
 ## Installation
 
