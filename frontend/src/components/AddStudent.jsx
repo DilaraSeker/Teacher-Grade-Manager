@@ -29,36 +29,36 @@ const AddStudent = () => {
   return (
     <div className="container">
       <div className="mt-5 form-container">
-        <h3>Öğrenci Ekle</h3>
+        <h3>Add Student</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Öğrenci Numarası:</label>
+            <label>Student Number:</label>
             <input
               type="text"
-              placeholder="Öğrenci Numarası"
+              placeholder="Student Number"
               value={studentNumber}
               onChange={e => setStudentNumber(e.target.value)}
             />
           </div>
           <div className="form-group">
-            <label>Ad:</label>
+            <label>Student Name:</label>
             <input
               type="text"
-              placeholder="Ad"
+              placeholder="Student Name"
               value={name}
               onChange={e => setName(e.target.value)}
             />
           </div>
           <div className="form-group">
-            <label>Soyad:</label>
+            <label>Student Surname:</label>
             <input
               type="text"
-              placeholder="Soyad"
+              placeholder="Student Surname"
               value={surname}
               onChange={e => setSurname(e.target.value)}
             />
           </div>
-          <button type="submit">Ekle</button>
+          <button type="submit" className="btn btn-primary mr-2 custom-add-button" style={{ backgroundColor: '#7b6bf0' }}>ADD</button>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </form>
       </div>
