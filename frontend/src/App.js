@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import HomePage from "./components/HomePage"
-import StudentDashboard from "./components/StudentDashboard"
-import CourseDashboard from "./components/CourseDashboard"
-import GradeDashboard from "./components/GradeDashboard"
+import DashboardStudent from "./components/DashboardStudent"
+import DashboardCourse from "./components/DashboardCourse"
+import DashboardGrade from "./components/DashboardGrade"
 
 function App() {
   const [activeButton, setActiveButton] = React.useState('home');
@@ -25,9 +25,9 @@ function App() {
 
         <div className="main-content">
           {activeButton === 'home' && <HomePage onButtonClick={handleButtonClick} activeButton={activeButton} />}
-          {activeButton === 'button1' && <StudentDashboard />}
-          {activeButton === 'button2' && <CourseDashboard />}
-          {activeButton === 'button3' && <GradeDashboard />}
+          {activeButton === 'button1' && <DashboardStudent/>}
+          {activeButton === 'button2' && <DashboardCourse/>}
+          {activeButton === 'button3' && <DashboardGrade/>}
         </div>
       </div>
     </Router>
