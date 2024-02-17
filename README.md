@@ -7,11 +7,11 @@ This application provides a platform for teachers to record and view student gra
 This project aims to develop two separate applications using React.js and Spring Boot technologies. The React application provides the user interface and functionality to list, add, and view grades in detail. The Spring Boot application communicates with the React application to save and list grade records in the database.
 
 ## Features
-![Homepage](assets/Homepage.png)
-![GradeDashboard](assets/GradeDashboard.png)
-![AddGrade](assets/AddGrade.png)
-![ListGrade](assets/ListGrade.png)
-![GradeDetails](assets/GradeDetails.png)
+![Homepage](assests/Homepage.PNG)
+![GradeDashboard](assests/GradeDashboard.PNG)
+![AddGrade](assests/AddGrade.PNG)
+![ListGrade](assests/ListGrade.PNG)
+![GradeDetails](assests/GradeDetails.PNG)
 
 ## Installation
 
